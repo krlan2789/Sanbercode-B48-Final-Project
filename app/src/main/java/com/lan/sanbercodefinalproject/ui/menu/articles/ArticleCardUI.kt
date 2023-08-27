@@ -1,4 +1,4 @@
-package com.lan.sanbercodefinalproject.ui.shared.articles
+package com.lan.sanbercodefinalproject.ui.menu.articles
 
 import android.util.Log
 import androidx.compose.foundation.clickable

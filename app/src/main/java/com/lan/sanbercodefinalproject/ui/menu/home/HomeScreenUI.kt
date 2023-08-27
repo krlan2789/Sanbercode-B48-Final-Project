@@ -18,13 +18,12 @@ import androidx.compose.ui.unit.dp
 import com.google.gson.Gson
 import com.lan.sanbercodefinalproject.activity.MainActivity
 import com.lan.sanbercodefinalproject.activity.DetailActivity
-import com.lan.sanbercodefinalproject.ui.shared.articles.ArticleCardUI
+import com.lan.sanbercodefinalproject.ui.menu.articles.ArticleCardUI
 import com.lan.sanbercodefinalproject.ui.shared.ContentListUI
 import com.lan.sanbercodefinalproject.ui.shared.SearchInputFieldUI
 import com.lan.sanbercodefinalproject.ui.shared.ShowProgressIndicator
 import com.lan.sanbercodefinalproject.ui.theme.SanbercodeFinalProjectTheme
 import com.lan.sanbercodefinalproject.viewmodel.ArticlesViewModel
-import com.lan.sanbercodefinalproject.viewmodel.DetailViewModel
 
 @Composable
 fun HomeScreenUI(viewModel: ArticlesViewModel, activity: ComponentActivity) {

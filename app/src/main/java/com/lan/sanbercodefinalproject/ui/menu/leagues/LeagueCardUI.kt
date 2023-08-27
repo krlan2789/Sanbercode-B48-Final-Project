@@ -1,4 +1,4 @@
-package com.lan.sanbercodefinalproject.ui.shared.leagues
+package com.lan.sanbercodefinalproject.ui.menu.leagues
 
 import android.util.Log
 import androidx.compose.foundation.clickable

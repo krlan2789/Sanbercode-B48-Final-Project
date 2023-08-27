@@ -14,7 +14,7 @@ data class ResponseTeams(
 data class ResultTeamItem(
 
 	@field:SerializedName("players")
-	val players: List<PlayersItem?>? = listOf(),
+	val players: List<PlayersItem> = listOf(),
 
 	@field:SerializedName("team_key")
 	val teamKey: String? = "",

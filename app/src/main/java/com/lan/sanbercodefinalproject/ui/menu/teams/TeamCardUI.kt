@@ -1,4 +1,4 @@
-package com.lan.sanbercodefinalproject.ui.shared.teams
+package com.lan.sanbercodefinalproject.ui.menu.teams
 
 import android.util.Log
 import androidx.compose.foundation.clickable
@@ -25,18 +25,22 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import com.lan.sanbercodefinalproject.model.response.ResultArticlesItem
 import com.lan.sanbercodefinalproject.model.response.ResultTeamItem
 import com.lan.sanbercodefinalproject.ui.theme.SanbercodeFinalProjectTheme
 
 @Composable
-fun TeamCardUI(data: ResultTeamItem, modifier: Modifier = Modifier) {
+fun TeamCardUI(data: ResultTeamItem, modifier: Modifier = Modifier, onClick: ((ResultTeamItem) -> Unit)? = null) {
     val height = 112
     Card(
         modifier = modifier
             .height(height.dp)
             .fillMaxWidth()
             .padding(horizontal = 24.dp, vertical = 8.dp)
-            .clickable(onClick = { Log.i("TeamsCardUI", "TeamsCard.click: " + data.teamName) })
+            .clickable(onClick = {
+                Log.i("TeamsCardUI", "TeamsCard.click: " + data.teamName)
+                onClick?.invoke(data)
+            })
     ) {
         Row(
             modifier = Modifier

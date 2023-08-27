@@ -91,6 +91,6 @@ fun MenuNavigationBottomUI(
 @Composable
 private fun Preview() {
     SanbercodeFinalProjectTheme {
-        MenuNavigationBottomUI()
+        MenuNavigationBottomUI(viewModel = MenuNavigationViewModel())
     }
 }
