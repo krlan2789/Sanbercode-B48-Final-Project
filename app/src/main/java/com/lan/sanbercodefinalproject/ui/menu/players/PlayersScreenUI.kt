@@ -28,7 +28,7 @@ fun PlayersScreenUI(data: ResultTeamItem, activity: ComponentActivity) {
     val navController = rememberNavController()
 
     Scaffold(
-        topBar = { MenuNavigationTopUI(activity = activity) }
+        topBar = { MenuNavigationTopUI(activity = activity, title = "My Favorite Players") }
     ) { padding ->
         Column(
             modifier = Modifier

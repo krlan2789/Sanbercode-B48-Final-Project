@@ -38,7 +38,7 @@ fun TeamsScreenUI(viewModel: TeamsViewModel, activity: ComponentActivity) {
     }
 
     Scaffold(
-        topBar = { MenuNavigationTopUI(activity = activity) }
+        topBar = { MenuNavigationTopUI(activity = activity, title = "Teams") }
     ) { padding ->
         Column(
             modifier = Modifier

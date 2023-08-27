@@ -38,9 +38,9 @@ fun HomeScreenUI(viewModel: ArticlesViewModel, activity: ComponentActivity) {
             .fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        Box(modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp)) {
-            SearchInputFieldUI(modifier = Modifier.fillMaxWidth())
-        }
+//        Box(modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp)) {
+//            SearchInputFieldUI(modifier = Modifier.fillMaxWidth())
+//        }
 
         ContentListUI(articles) {article ->
             ArticleCardUI(data = article) {

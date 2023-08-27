@@ -34,7 +34,7 @@ fun LeaguesScreenUI(viewModel: LeaguesViewModel, activity: ComponentActivity) {
     }
 
     Scaffold(
-        topBar = { MenuNavigationTopUI(activity = activity) }
+        topBar = { MenuNavigationTopUI(activity = activity, title = "Leagues") }
     ) { padding ->
         Column(
             modifier = Modifier
