@@ -1,6 +1,6 @@
 package com.lan.sanbercodefinalproject.ui.shared.navigations
 
-import android.util.Log
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.lan.sanbercodefinalproject.datasource.MenuNavStack
 import com.lan.sanbercodefinalproject.model.MenuNavigationItemModel
 import com.lan.sanbercodefinalproject.ui.theme.SanbercodeFinalProjectTheme
 import com.lan.sanbercodefinalproject.viewmodel.MenuNavigationViewModel
@@ -27,53 +28,45 @@ import com.lan.sanbercodefinalproject.viewmodel.MenuNavigationViewModel
 @Composable
 fun MenuNavigationBottomUI(
     navController: NavController = rememberNavController(),
-    viewModel: MenuNavigationViewModel? = null
+    viewModel: MenuNavigationViewModel
 ) {
     val bottomNavItems = listOf(
         MenuNavigationItemModel.Home,
-        MenuNavigationItemModel.Teams,
         MenuNavigationItemModel.Leagues,
+        MenuNavigationItemModel.Teams,
         MenuNavigationItemModel.Players,
     )
-    val selectedItem by viewModel!!.currentMenu.observeAsState(0)
+
+    val selectedItem by viewModel.currentMenuNav.observeAsState(bottomNavItems[0].getPair())
+
+    BackHandler(enabled = true) {
+        MenuNavStack.previous(navController = navController, viewModel = viewModel)
+    }
 
     NavigationBar(
         containerColor = MaterialTheme.colorScheme.primary,
         modifier = Modifier.height(64.dp)
     ) {
-        bottomNavItems.forEachIndexed { index, item ->
+        bottomNavItems.forEach { item ->
             NavigationBarItem(
-                selected = selectedItem == index,
+                selected = selectedItem?.first == item.route,
                 onClick = {
-                    viewModel?.setCurrentMenu(index)
-                    Log.i("NavigationItem", "${index}::${item.title}")
-                    navController.navigate(item.route) {
-                        navController.graph.startDestinationRoute?.let { route ->
-                            popUpTo(route) {
-                                saveState = true
-                            }
-                        }
-                    }
+                    val pairTarget = item.getPair()
+                    MenuNavStack.next(navController = navController, viewModel = viewModel, target = pairTarget)
                 },
                 icon = {
                     Icon(
                         painter = painterResource(id = item.icon),
                         contentDescription = "${item.title} Icon",
-                        tint = (
-                            if (selectedItem == index) MaterialTheme.colorScheme.primary
-                            else MaterialTheme.colorScheme.primaryContainer
-                        ),
-                        modifier = Modifier.height((
-                            if (selectedItem == index) 32
-                            else 28
-                        ).dp).aspectRatio(1f).padding(bottom = (
-                            if (selectedItem == index) 0
-                            else 12
-                        ).dp)
+                        tint = (if (selectedItem?.first == item.route) MaterialTheme.colorScheme.primary; else MaterialTheme.colorScheme.primaryContainer),
+                        modifier = Modifier
+                            .height((if (selectedItem?.first == item.route) 32; else 28).dp)
+                            .aspectRatio(1f)
+                            .padding(bottom = (if (selectedItem?.first == item.route) 0; else 12).dp)
                     )
                 },
                 label = {
-                    if (selectedItem != index) {
+                    if (selectedItem?.first != item.route) {
                         Text(
                             text = item.title,
                             fontWeight = FontWeight.SemiBold,

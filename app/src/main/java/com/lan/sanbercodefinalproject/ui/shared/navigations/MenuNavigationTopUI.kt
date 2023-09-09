@@ -1,5 +1,6 @@
 package com.lan.sanbercodefinalproject.ui.shared.navigations
 
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -23,13 +24,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.lan.sanbercodefinalproject.R
 import com.lan.sanbercodefinalproject.ui.theme.SanbercodeFinalProjectTheme
 
 @Composable
-fun MenuNavigationTopUI(activity: ComponentActivity = ComponentActivity(), title: String = "", height: Int = 56) {
+fun MenuNavigationTopUI(activity: ComponentActivity = ComponentActivity(), navController: NavController? = null, title: String = "", height: Int = 56) {
     Box(modifier = Modifier
         .fillMaxWidth()
         .height(height.dp)
@@ -60,7 +62,24 @@ fun MenuNavigationTopUI(activity: ComponentActivity = ComponentActivity(), title
             modifier = Modifier
                 .fillMaxHeight()
                 .aspectRatio(1f)
-                .clickable { activity.finish() }
+                .clickable {
+//                    if (navController != null) {
+//                        val route = "" + navController.previousBackStackEntry?.destination?.route
+//                        if (route.isNotEmpty()) {
+//                            Log.i("MenuNavigationTopUI", "onBackButton.click: $route")
+//                            navController.navigate(route) {
+//                                navController.graph.startDestinationRoute?.let { route ->
+//                                    popUpTo(route) {
+//                                        saveState = true
+//                                    }
+//                                }
+//                            }
+//                            navController.popBackStack()
+//                        } else
+//                            activity.finish()
+//                    } else
+                        activity.finish()
+                }
         )
     }
 }

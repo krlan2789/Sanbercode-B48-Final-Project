@@ -2,7 +2,6 @@ package com.lan.sanbercodefinalproject.ui.menu.home
 
 import android.content.Intent
 import androidx.activity.ComponentActivity
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -34,13 +33,11 @@ fun HomeScreenUI(viewModel: ArticlesViewModel, activity: ComponentActivity) {
     }
 
     Column(
-        modifier = Modifier
-            .fillMaxSize(),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
+        modifier = Modifier.fillMaxSize()
     ) {
-//        Box(modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp)) {
-//            SearchInputFieldUI(modifier = Modifier.fillMaxWidth())
-//        }
+        Box(modifier = Modifier.padding(16.dp)) {
+            SearchInputFieldUI(modifier = Modifier.fillMaxWidth())
+        }
 
         ContentListUI(articles) {article ->
             ArticleCardUI(data = article) {

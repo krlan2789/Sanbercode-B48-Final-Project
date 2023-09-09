@@ -1,12 +1,10 @@
 package com.lan.sanbercodefinalproject.activity
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -15,11 +13,10 @@ import coil.ImageLoaderFactory
 import coil.disk.DiskCache
 import com.google.gson.Gson
 import com.lan.sanbercodefinalproject.activity.ui.theme.SanbercodeFinalProjectTheme
-import com.lan.sanbercodefinalproject.model.response.ResultArticlesItem
 import com.lan.sanbercodefinalproject.model.response.ResultTeamItem
 import com.lan.sanbercodefinalproject.ui.menu.players.PlayersScreenUI
 
-class PlayersActivity : ComponentActivity(), ImageLoaderFactory {
+class PlayersActivity : BaseActivity(), ImageLoaderFactory {
     companion object {
         const val EXTRA_PLAYER_DATA = "EXTRA_PLAYER_DATA"
     }

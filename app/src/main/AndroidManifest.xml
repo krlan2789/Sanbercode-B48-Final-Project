@@ -15,6 +15,11 @@
         android:theme="@style/Theme.SanbercodeFinalProject"
         tools:targetApi="31">
         <activity
+            android:name=".activity.BaseActivity"
+            android:exported="false"
+            android:label="@string/title_activity_base"
+            android:theme="@style/Theme.SanbercodeFinalProject" />
+        <activity
             android:name=".activity.PlayersActivity"
             android:exported="false"
             android:label="@string/title_activity_players"

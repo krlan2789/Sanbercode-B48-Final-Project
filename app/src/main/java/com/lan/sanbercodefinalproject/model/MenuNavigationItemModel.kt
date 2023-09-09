@@ -9,4 +9,8 @@ sealed class MenuNavigationItemModel(var route: String, var icon: Int, var title
     object Leagues : MenuNavigationItemModel("leagues", R.drawable.baseline_emoji_events_24, "Leagues")
     object News : MenuNavigationItemModel("news", R.drawable.baseline_newspaper_24, "News")
     object Matches : MenuNavigationItemModel("matches", R.drawable.ic_account_tree, "Matches")
+
+    fun getPair() : Pair<String, String> {
+        return Pair(route, title)
+    }
 }

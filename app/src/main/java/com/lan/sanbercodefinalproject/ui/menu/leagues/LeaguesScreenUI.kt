@@ -1,10 +1,8 @@
 package com.lan.sanbercodefinalproject.ui.menu.leagues
 
-import androidx.activity.ComponentActivity
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -16,6 +14,9 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavBackStackEntry
+import androidx.navigation.NavController
+import com.lan.sanbercodefinalproject.activity.BaseActivity
 import com.lan.sanbercodefinalproject.activity.MainActivity
 import com.lan.sanbercodefinalproject.ui.shared.ContentListUI
 import com.lan.sanbercodefinalproject.ui.shared.NoResultsUI
@@ -26,7 +27,7 @@ import com.lan.sanbercodefinalproject.viewmodel.LeaguesViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LeaguesScreenUI(viewModel: LeaguesViewModel, activity: ComponentActivity) {
+fun LeaguesScreenUI(viewModel: LeaguesViewModel, activity: BaseActivity, navController: NavController? = null) {
     val leagues by viewModel.leagues.observeAsState(emptyList())
 
     LaunchedEffect(Unit) {
@@ -34,7 +35,7 @@ fun LeaguesScreenUI(viewModel: LeaguesViewModel, activity: ComponentActivity) {
     }
 
     Scaffold(
-        topBar = { MenuNavigationTopUI(activity = activity, title = "Leagues") }
+        topBar = { MenuNavigationTopUI(activity = activity, title = "Leagues", navController = navController) }
     ) { padding ->
         Column(
             modifier = Modifier

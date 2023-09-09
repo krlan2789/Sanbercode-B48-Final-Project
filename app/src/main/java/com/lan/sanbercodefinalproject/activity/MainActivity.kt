@@ -1,7 +1,6 @@
 package com.lan.sanbercodefinalproject.activity
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Arrangement
@@ -24,13 +23,15 @@ import com.lan.sanbercodefinalproject.ui.theme.SanbercodeFinalProjectTheme
 import com.lan.sanbercodefinalproject.viewmodel.ArticlesViewModel
 import com.lan.sanbercodefinalproject.viewmodel.LeaguesViewModel
 import com.lan.sanbercodefinalproject.viewmodel.MenuNavigationViewModel
+import com.lan.sanbercodefinalproject.viewmodel.TabLayoutViewModel
 import com.lan.sanbercodefinalproject.viewmodel.TeamsViewModel
 
-class MainActivity : ComponentActivity(), ImageLoaderFactory {
-    private val articlesViewModel: ArticlesViewModel by viewModels()
-    private val teamsViewModel: TeamsViewModel by viewModels()
-    private val leaguesViewModel: LeaguesViewModel by viewModels()
-    private val navigationViewModel: MenuNavigationViewModel by viewModels()
+class MainActivity : BaseActivity(), ImageLoaderFactory {
+    val articlesViewModel: ArticlesViewModel by viewModels()
+    val teamsViewModel: TeamsViewModel by viewModels()
+    val leaguesViewModel: LeaguesViewModel by viewModels()
+    val navigationViewModel: MenuNavigationViewModel by viewModels()
+    val tabLayoutViewModel: TabLayoutViewModel by viewModels()
 
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,7 +51,7 @@ class MainActivity : ComponentActivity(), ImageLoaderFactory {
                                 .fillMaxSize(),
                             verticalArrangement = Arrangement.spacedBy(16.dp)
                         ) {
-                            MenuNavigationUI(navController, this@MainActivity, articlesViewModel, teamsViewModel, leaguesViewModel)
+                            MenuNavigationUI(navController, this@MainActivity)
                         }
                     }
                 }

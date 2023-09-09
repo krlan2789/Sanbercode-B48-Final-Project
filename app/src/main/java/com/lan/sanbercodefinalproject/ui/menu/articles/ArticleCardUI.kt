@@ -35,7 +35,7 @@ fun ArticleCardUI(data: ResultArticlesItem, modifier: Modifier = Modifier, onCli
         modifier = Modifier
             .wrapContentHeight()
             .fillMaxWidth()
-            .padding(start = 24.dp, end = 24.dp)
+            .padding(horizontal = 24.dp, vertical = 8.dp)
             .clickable(onClick = {
                 Log.i("ArticleCardUI", "ArticleCard.click: " + data.title)
                 onClick?.invoke(data)
@@ -90,7 +90,7 @@ fun ArticleCardUI(data: ResultArticlesItem, modifier: Modifier = Modifier, onCli
         }
     }
 
-    Spacer(modifier = Modifier.height(16.dp).fillMaxWidth())
+//    Spacer(modifier = Modifier.height(16.dp).fillMaxWidth())
 }
 
 @Preview
